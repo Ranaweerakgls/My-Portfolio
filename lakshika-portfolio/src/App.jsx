@@ -1,56 +1,24 @@
-// src/App.jsx
-import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import CLOUDS from "vanta/dist/vanta.clouds.min";
+import ParticlesBackground from "./ParticlesBackground";
+import Hero from "./sections/Hero";
+import LakshikaPhoto from "./assets/lakshika.jpg"; // Make sure the image is in this path
 
-function App() {
-  const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        CLOUDS({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-        })
-      );
-    }
-
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-
+export default function App() {
   return (
-    <>
-      {/* Vanta Background */}
-      <div
-        ref={vantaRef}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-        }}
-      />
+    <div className="relative min-h-screen text-white overflow-x-hidden">
+      
+      {/* Particles Background */}
+      <ParticlesBackground />
 
-      {/* Website Content */}
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <h1>Hi, I'm Lakshika 👋</h1>
-        <p>Welcome to my portfolio</p>
+      {/* Main content */}
+      <div className="relative z-10">
+        {/* Hero Section with Photo */}
+        <Hero imageSrc={LakshikaPhoto} />
 
-        {/* Add your sections here */}
+        {/* Future Sections */}
+        {/* <About /> */}
+        {/* <Projects /> */}
+        {/* <Contact /> */}
       </div>
-    </>
+    </div>
   );
 }
-
-export default App;

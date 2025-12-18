@@ -103,7 +103,7 @@ export default function Hero({ imageSrc }) {
             variants={fadeUp}
             {...hoverText}
           >
-            I’m an Information Technology undergraduate passionate about creating engaging
+            Hello! I’m an Information Technology undergraduate passionate about creating engaging
              and intuitive digital experiences. As a UI/UX designer and full-stack developer,
               I design user-centered interfaces and build functional, scalable web applications.
                I also have experience in data analysis and visualization, transforming data into 

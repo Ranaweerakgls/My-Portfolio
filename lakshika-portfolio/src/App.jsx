@@ -1,5 +1,6 @@
 import ParticlesBackground from "./ParticlesBackground";
 import Hero from "./sections/Hero";
+import Education from "./sections/Education";
 import LakshikaPhoto from "./assets/lakshika.jpg"; // Make sure the image is in this path
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
       <div className="relative z-10">
         {/* Hero Section with Photo */}
         <Hero imageSrc={LakshikaPhoto} />
+        <Education />
 
         {/* Future Sections */}
         {/* <About /> */}

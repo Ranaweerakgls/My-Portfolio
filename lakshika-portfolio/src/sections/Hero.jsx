@@ -39,7 +39,9 @@ export default function Hero({ imageSrc }) {
       </motion.div>
 
       {/* PHOTO + ABOUT ME CENTERED */}
-      <motion.div className="flex flex-col md:flex-row items-center justify-center gap-20 max-w-6xl w-full relative">
+      <motion.div className="flex flex-col md:flex-row-reverse items-center justify-center gap-20 max-w-6xl w-full relative">
+
+
 
         {/* PHOTO WITH MODERN EFFECTS */}
         <motion.div className="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
@@ -101,10 +103,13 @@ export default function Hero({ imageSrc }) {
             variants={fadeUp}
             {...hoverText}
           >
-            I’m an Information Technology undergraduate passionate about designing
-            engaging and intuitive digital experiences. As a UI/UX designer, I create
-            interfaces that combine functionality with aesthetics to deliver meaningful
-            user experiences.
+            I’m an Information Technology undergraduate passionate about creating engaging
+             and intuitive digital experiences. As a UI/UX designer and full-stack developer,
+              I design user-centered interfaces and build functional, scalable web applications.
+               I also have experience in data analysis and visualization, transforming data into 
+               clear insights that support informed decision-making.
+
+
           </motion.p>
 
           <motion.div className="flex flex-wrap gap-6 mt-2" variants={fadeUp}>
@@ -117,7 +122,7 @@ export default function Hero({ imageSrc }) {
             </a>
 
             <a
-              href="https://github.com/Lakshika"
+              href="https://github.com/Ranaweerakgls"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full border border-gray-400 text-gray-300 hover:bg-gray-100 hover:text-black shadow-md hover:scale-105 transition-all duration-300"
@@ -126,7 +131,7 @@ export default function Hero({ imageSrc }) {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/LakshikaRanaweera"
+              href="https://linkedin.com/in/lakshika-ranaweera-905989296"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white shadow-md hover:scale-105 transition-all duration-300"

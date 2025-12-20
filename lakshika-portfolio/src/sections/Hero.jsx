@@ -17,37 +17,13 @@ export default function Hero({ imageSrc }) {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32 overflow-hidden gap-24">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 md:px-12 lg:px-20 py-32 overflow-hidden">
+      <motion.div className="flex flex-col md:flex-row-reverse items-center justify-between gap-10 max-w-[1400px] w-full mx-auto relative">
 
-      {/* NAME & DEGREE */}
-      <motion.div className="text-center" variants={container} initial="hidden" animate="visible">
-        <motion.h1
-          className="text-6xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 leading-tight mb-8 cursor-pointer"
-          variants={fadeUp}
-          {...hoverText}
-        >
-          Lakshika <span className="text-white">Ranaweera</span>
-        </motion.h1>
-
-        <motion.span
-          className="text-lg md:text-2xl text-gray-300 mb-20 cursor-pointer"
-          variants={fadeUp}
-          {...hoverText}
-        >
-          Undergraduate BSc(Hons) in Information Technology
-        </motion.span>
-      </motion.div>
-
-      {/* PHOTO + ABOUT ME CENTERED */}
-      <motion.div className="flex flex-col md:flex-row-reverse items-center justify-center gap-20 max-w-6xl w-full relative">
-
-
-
-        {/* PHOTO WITH MODERN EFFECTS */}
-        <motion.div className="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
-
+        {/* PHOTO SECTION */}
+        <motion.div className="relative w-80 h-80 md:w-96 md:h-96 flex-shrink-0">
           <motion.div
-            className="w-full h-full rounded-3xl overflow-hidden shadow-2xl p-1 relative"
+            className="w-full h-full rounded-full overflow-hidden shadow-2xl p-1 relative"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 15 }}
@@ -56,12 +32,12 @@ export default function Hero({ imageSrc }) {
             <img
               src={imageSrc}
               alt="Lakshika Ranaweera"
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-full"
             />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 opacity-10 pointer-events-none"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 opacity-10 pointer-events-none"></div>
           </motion.div>
 
-          {/* Floating Role Cards (modern positions) */}
+          {/* Floating Role Cards */}
           <motion.div className="absolute -top-10 -left-10 flex flex-col gap-4">
             <motion.div
               className="px-4 py-2 bg-purple-700 text-white rounded-xl shadow-xl cursor-default"
@@ -80,43 +56,60 @@ export default function Hero({ imageSrc }) {
             </motion.div>
           </motion.div>
 
-          {/* Soft glow behind photo */}
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-pink-400 via-purple-500 to-indigo-400 opacity-15 blur-3xl -z-10"></div>
         </motion.div>
 
-        {/* ABOUT ME + BUTTONS */}
+        {/* TEXT SECTION */}
         <motion.div
-          className="flex flex-col items-start text-left space-y-10"
+          className="flex flex-col items-start text-left space-y-6 md:space-y-10"
           variants={container}
           initial="hidden"
           animate="visible"
         >
-          <motion.h2
-            className="text-2xl md:text-3xl font-semibold text-pink-400 cursor-pointer"
-            variants={fadeUp}
-            {...hoverText}
-          >
-            About Me
-          </motion.h2>
+          <motion.div variants={fadeUp}>
+            <p
+              className="text-xl md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 leading-tight cursor-pointer"
+              {...hoverText}
+            >
+              HELLO, I'M
+            </p>
+
+            <h1
+              className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 leading-tight cursor-pointer"
+              {...hoverText}
+            >
+              Lakshika
+            </h1>
+
+            <h1
+              className="text-6xl md:text-8xl font-extrabold text-white leading-tight cursor-pointer"
+              {...hoverText}
+            >
+              Ranaweera
+            </h1>
+
+            <p className="text-gray-300 text-md md:text-xl mt-4 font-medium tracking-wide">
+              Undergraduate BSc(Hons) in Information Technology
+            </p>
+          </motion.div>
+
           <motion.p
-            className="text-gray-300 md:text-lg max-w-xl leading-relaxed cursor-pointer"
+            className="text-gray-300 md:text-lg max-w-2xl leading-relaxed cursor-pointer"
             variants={fadeUp}
             {...hoverText}
           >
-            Hello! I’m an Information Technology undergraduate passionate about creating engaging
-             and intuitive digital experiences. As a UI/UX designer and full-stack developer,
-              I design user-centered interfaces and build functional, scalable web applications.
-               I also have experience in data analysis and visualization, transforming data into 
-               clear insights that support informed decision-making.
-
-
+            I’m passionate about creating engaging & intuitive digital experiences.
+            As a UI/UX designer & full-stack developer, I design user-centered interfaces
+            & build functional, scalable web applications. I also have experience in data
+            analysis & visualization, transforming data into clear insights that support
+            informed decision-making.
           </motion.p>
 
           <motion.div className="flex flex-wrap gap-6 mt-2" variants={fadeUp}>
             <a
               href="/Lakshika Ranaweera CV.pdf"
               download
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-black font-semibold shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
+              className="flex items-center gap-2 px-8 py-4 rounded-full bg-pink-500 text-black font-bold shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
             >
               <FaDownload /> Download CV
             </a>
@@ -125,7 +118,7 @@ export default function Hero({ imageSrc }) {
               href="https://github.com/Ranaweerakgls"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-6 py-3 rounded-full border border-gray-400 text-gray-300 hover:bg-gray-100 hover:text-black shadow-md hover:scale-105 transition-all duration-300"
+              className="flex items-center gap-2 px-6 py-4 rounded-full border border-gray-400 text-gray-300 hover:bg-gray-100 hover:text-black shadow-md hover:scale-105 transition-all duration-300"
             >
               <FaGithub /> GitHub
             </a>
@@ -134,7 +127,7 @@ export default function Hero({ imageSrc }) {
               href="https://linkedin.com/in/lakshika-ranaweera-905989296"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-6 py-3 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white shadow-md hover:scale-105 transition-all duration-300"
+              className="flex items-center gap-2 px-6 py-4 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white shadow-md hover:scale-105 transition-all duration-300"
             >
               <FaLinkedin /> LinkedIn
             </a>

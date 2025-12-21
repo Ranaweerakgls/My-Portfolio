@@ -25,7 +25,6 @@ export default function AboutSection() {
             </span>
           </h2>
 
-          <div className="mt-6 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-70" />
         </motion.div>
 
         {/* Cards */}
@@ -79,18 +78,18 @@ export default function AboutSection() {
         >
           <p>
             I am a 3rd-year Information Technology undergraduate at SLIIT,
-             passionate about creating engaging digital experiences. As a UI/UX designer,
-              full-stack developer, and data analyst, I focus on building innovative
-               web and mobile applications using technologies like MERN Stack, Java,
-                Kotlin, and Android Studio, while designing intuitive, user-centered interfaces.
+            passionate about creating engaging digital experiences. As a UI/UX designer,
+            full-stack developer, and data analyst, I focus on building innovative
+            web and mobile applications using technologies like MERN Stack, Java,
+            Kotlin, and Android Studio, while designing intuitive, user-centered interfaces.
           </p>
 
           <p>
             I enjoy transforming ideas into real-world products, 
             analyzing data to provide actionable insights, and continuously 
             learning new technologies. My goal is to grow as a professional,
-             contribute meaningfully, and deliver impactful digital solutions
-              that seamlessly combine design, development, and analytics.
+            contribute meaningfully, and deliver impactful digital solutions
+            that seamlessly combine design, development, and analytics.
           </p>
         </motion.div>
 

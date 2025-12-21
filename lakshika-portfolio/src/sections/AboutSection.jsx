@@ -78,27 +78,19 @@ export default function AboutSection() {
           className="max-w-4xl mx-auto text-gray-300 text-base md:text-lg leading-relaxed space-y-6"
         >
           <p>
-            I am a dedicated 3rd-year Information Technology undergraduate at
-            SLIIT, specializing in Software Engineering. I am passionate about
-            creating engaging digital experiences, combining my skills as a
-            UI/UX designer, full-stack developer, and data analyst to build
-            innovative and functional solutions.
+            I am a 3rd-year Information Technology undergraduate at SLIIT,
+             passionate about creating engaging digital experiences. As a UI/UX designer,
+              full-stack developer, and data analyst, I focus on building innovative
+               web and mobile applications using technologies like MERN Stack, Java,
+                Kotlin, and Android Studio, while designing intuitive, user-centered interfaces.
           </p>
 
           <p>
-            I specialize in developing scalable web and mobile applications
-            using technologies like MERN Stack, Java, Kotlin, and Android Studio.
-            Alongside coding, I design user-centered interfaces and transform
-            complex data into clear insights through analysis and visualization,
-            helping deliver informed, data-driven solutions.
-          </p>
-
-          <p>
-            I enjoy turning ideas into real-world products, learning new
-            technologies, and crafting clean, efficient, and intuitive
-            applications. My goal is to continuously grow, contribute
-            meaningfully, and create impactful digital solutions that merge
-            design, development, and analytics seamlessly.
+            I enjoy transforming ideas into real-world products, 
+            analyzing data to provide actionable insights, and continuously 
+            learning new technologies. My goal is to grow as a professional,
+             contribute meaningfully, and deliver impactful digital solutions
+              that seamlessly combine design, development, and analytics.
           </p>
         </motion.div>
 

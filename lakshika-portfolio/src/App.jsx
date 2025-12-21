@@ -2,6 +2,7 @@ import ParticlesBackground from "./ParticlesBackground";
 import Hero from "./sections/Hero";
 import AboutSection from "./sections/AboutSection";
 import SkillsSection from "./sections/skills";
+import Projects from "./sections/Projects";
 
 import LakshikaPhoto from "./assets/lakshika.jpg";
 
@@ -17,6 +18,7 @@ export default function App() {
         <Hero imageSrc={LakshikaPhoto} />
         <AboutSection />
         <SkillsSection />
+        <Projects/>
       </div>
 
     </div>

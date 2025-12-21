@@ -1,111 +1,144 @@
 import { Briefcase, GraduationCap, Award } from "lucide-react";
 import { motion } from "framer-motion";
 
-export const AboutSection = () => {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 22 } },
-  };
-
+export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden min-h-screen">
-      
-      {/* 3D Gradient Background Glow */}
-      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-pink-400 via-purple-500 to-indigo-400 opacity-15 blur-3xl -z-10"></div>
+    <section id="about" className="py-28 px-4 relative">
+      <div className="max-w-7xl mx-auto text-center">
 
-      <div className="container mx-auto max-w-7xl relative z-10 flex flex-col items-center">
-
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
-          className="text-center mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-2">Explore My</p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-            Skills &{" "}
+          <p className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
+            Get To Know More
+          </p>
+
+          <h2 className="text-5xl md:text-6xl font-extrabold text-white">
+            About{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
-              Expertise
+              Me
             </span>
           </h2>
+
+          <div className="mt-6 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-70" />
         </motion.div>
 
-        {/* 3 Boxes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
 
-          {/* BOX 1: EXPERIENCE */}
-          <motion.div 
-            whileHover={{ y: -10, scale: 1.05 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur opacity-20 group-hover:opacity-50 transition duration-500 -z-10"></div>
-            <div className="relative bg-[#0d0d12] border border-white/10 backdrop-blur-2xl p-10 rounded-3xl h-full flex flex-col items-center text-center shadow-2xl">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 mb-6">
-                <Briefcase className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Experience</h3>
-              <div className="space-y-3">
-                <p className="text-gray-300 text-lg font-medium">Web & Mobile Development</p>
-                <div className="inline-block px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30">
-                  <p className="text-purple-400 text-sm font-black uppercase tracking-widest drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
-                    MERN | Kotlin | Java
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <Card
+            icon={<Briefcase size={38} />}
+            title="Experience"
+            description="Professional experience in building scalable digital products"
+            points={[
+              "Full-Stack Web Development (MERN Stack)",
+              "Android Application Development",
+              "Java & Kotlin Programming",
+            ]}
+            hoverGradient="from-purple-600/40 to-pink-600/40"
+          />
 
-          {/* BOX 2: EDUCATION */}
-          <motion.div 
-            whileHover={{ y: -10, scale: 1.05 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-pink-600 rounded-3xl blur opacity-20 group-hover:opacity-50 transition duration-500 -z-10"></div>
-            <div className="relative bg-[#0d0d12] border border-white/10 backdrop-blur-2xl p-10 rounded-3xl h-full flex flex-col items-center text-center shadow-2xl">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-pink-500/20 border border-white/10 mb-6">
-                <GraduationCap className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Education</h3>
-              <div className="space-y-3">
-                <p className="text-gray-300 text-lg font-medium">BSc (Hons) Information Technology</p>
-                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30">
-                  <p className="text-blue-400 text-sm font-black uppercase tracking-widest drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
-                    SLIIT | GPA: 3.2 / 4.0
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <Card
+            icon={<GraduationCap size={38} />}
+            title="Education"
+            description="Strong academic foundation in computing and Information Technology"
+            points={[
+              "BSc (Hons) in Information Technology",
+              "Specialized in Information Technology",
+              "GPA: 3.2 (SLIIT)",
+            ]}
+            hoverGradient="from-blue-600/40 to-cyan-600/40"
+          />
 
-          {/* BOX 3: CERTIFICATIONS */}
-          <motion.div 
-            whileHover={{ y: -10, scale: 1.05 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl blur opacity-20 group-hover:opacity-50 transition duration-500 -z-10"></div>
-            <div className="relative bg-[#0d0d12] border border-white/10 backdrop-blur-2xl p-10 rounded-3xl h-full flex flex-col items-center text-center shadow-2xl">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-white/10 mb-6">
-                <Award className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Certifications</h3>
-              <div className="flex flex-col gap-3">
-                {["Android Development", "Web Technologies", "Database Management"].map((cert) => (
-                  <div key={cert} className="px-4 py-1 rounded-lg bg-pink-500/5 border border-pink-500/20">
-                    <p className="text-pink-400 text-sm font-bold tracking-wide uppercase">
-                      {cert}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          <Card
+            icon={<Award size={38} />}
+            title="Certifications"
+            description="Industry-recognized certifications validating technical expertise"
+            points={[
+              "Android Application Development Certification",
+              "Web Technologies Certification",
+              "Database Management Systems Certification",
+            ]}
+            hoverGradient="from-orange-500/40 to-pink-500/40"
+          />
 
         </div>
+
+        {/* About Me Description */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-4xl mx-auto text-gray-300 text-base md:text-lg leading-relaxed space-y-6"
+        >
+          <p>
+            I am a dedicated 3rd-year Information Technology undergraduate at
+            SLIIT, specializing in Software Engineering. I am passionate about
+            creating engaging digital experiences, combining my skills as a
+            UI/UX designer, full-stack developer, and data analyst to build
+            innovative and functional solutions.
+          </p>
+
+          <p>
+            I specialize in developing scalable web and mobile applications
+            using technologies like MERN Stack, Java, Kotlin, and Android Studio.
+            Alongside coding, I design user-centered interfaces and transform
+            complex data into clear insights through analysis and visualization,
+            helping deliver informed, data-driven solutions.
+          </p>
+
+          <p>
+            I enjoy turning ideas into real-world products, learning new
+            technologies, and crafting clean, efficient, and intuitive
+            applications. My goal is to continuously grow, contribute
+            meaningfully, and create impactful digital solutions that merge
+            design, development, and analytics seamlessly.
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );
-};
+}
+
+function Card({ icon, title, description, points, hoverGradient }) {
+  return (
+    <motion.div
+      whileHover={{ y: -8, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 180, damping: 18 }}
+      className="relative rounded-3xl p-10 text-left bg-[#0d0d12] border border-white/10 group overflow-hidden"
+    >
+      {/* Hover Gradient Overlay */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${hoverGradient}
+        opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+      />
+
+      <div className="relative z-10">
+        <div className="mb-6 flex justify-center text-white">
+          {icon}
+        </div>
+
+        <h3 className="text-2xl font-semibold mb-2 text-white text-center">
+          {title}
+        </h3>
+
+        <p className="text-gray-300 mb-6 text-center">
+          {description}
+        </p>
+
+        <ul className="list-disc list-inside space-y-2 text-gray-200 text-sm">
+          {points.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+}

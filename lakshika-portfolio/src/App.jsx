@@ -3,6 +3,7 @@ import Hero from "./sections/Hero";
 import AboutSection from "./sections/AboutSection";
 import SkillsSection from "./sections/skills";
 import Projects from "./sections/Projects";
+import ContactMe from "./sections/ContactMe";
 
 import LakshikaPhoto from "./assets/lakshika.jpg";
 
@@ -19,6 +20,7 @@ export default function App() {
         <AboutSection />
         <SkillsSection />
         <Projects/>
+        <ContactMe/>
       </div>
 
     </div>

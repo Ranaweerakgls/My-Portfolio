@@ -35,7 +35,7 @@ const projectsData = [
     title: "Personal Finance Tracker App (BUDGETLYST)",
     description:
       "Android Kotlin app for managing expenses and budgets, featuring offline support, real-time alerts, interactive charts, biometric login, and cloud backup.",
-    image: "../projects/Moblie.jpg",
+    image: "../projects/budgetlyst.jpg",
     tags: [
       { name: "Kotlin", icon: <SiKotlin /> },
       { name: "Android", icon: <SiAndroid /> },
@@ -48,7 +48,7 @@ const projectsData = [
     title: "Staff Management System (SMS)",
     description:
       "Web-based Staff Management System for streamlining university operations with scheduling, IT support, authentication, and knowledge sharing, built with PHP, MySQL, HTML, CSS, and JavaScript.",
-    image: "https://via.placeholder.com/400x300?text=SMS",
+    image: "../projects/staff.jpg",
     tags: [
       { name: "PHP", icon: <SiPhp /> },
       { name: "MySQL", icon: <SiMysql /> },

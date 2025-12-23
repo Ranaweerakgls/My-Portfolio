@@ -16,8 +16,6 @@ import {
 } from "react-icons/si";
 import { FaJava, FaDatabase, FaChartBar } from "react-icons/fa";
 
-
-
 const projectsData = [
   {
     id: 1,
@@ -42,7 +40,7 @@ const projectsData = [
       { name: "Kotlin", icon: <SiKotlin /> },
       { name: "Android", icon: <SiAndroid /> },
       { name: "SQLite", icon: <SiSqlite /> },
-      { name: "MPChart", icon: <SiReact /> }, // Placeholder
+      { name: "MPChart", icon: <SiReact /> },
     ],
   },
   {
@@ -56,18 +54,6 @@ const projectsData = [
       { name: "MySQL", icon: <SiMysql /> },
       { name: "Full-Stack", icon: <FaDatabase /> },
       { name: "GitHub", icon: <SiGithub /> },
-    ],
-  },
-  {
-    id: 4,
-    title: "Online Help Desk for University Students",
-    description:
-      "Full-stack Java web application for IT support, enabling students to submit tickets, schedule appointments, and securely communicate with staff, with role-based access and an admin dashboard for analytics and reporting.",
-    image: "https://via.placeholder.com/400x300?text=Help+Desk",
-    tags: [
-      { name: "Java", icon: <FaJava /> },
-      { name: "JSP Servlet", icon: <FaJava /> },
-      { name: "MySQL", icon: <SiMysql /> },
       { name: "Bootstrap", icon: <SiBootstrap /> },
     ],
   },
@@ -104,12 +90,11 @@ const projectsData = [
       "Interactive Power BI dashboard analyzing coffee sales trends, DAX, KPIs, time-based and product-level performance, with dynamic visualizations and a user-friendly interface.",
     image: "https://via.placeholder.com/400x300?text=Coffee+Sales",
     tags: [
-  { name: "Power BI", icon: <FaChartBar /> },
-  { name: "DAX", icon: <FaChartBar /> },
-  { name: "Relational Modeling", icon: <FaDatabase /> },
-  { name: "KPI Dashboards", icon: <FaChartBar /> },
-],
-
+      { name: "Power BI", icon: <FaChartBar /> },
+      { name: "DAX", icon: <FaChartBar /> },
+      { name: "Relational Modeling", icon: <FaDatabase /> },
+      { name: "KPI Dashboards", icon: <FaChartBar /> },
+    ],
   },
   {
     id: 8,
@@ -118,16 +103,30 @@ const projectsData = [
       "Interactive Spotify Analytics Dashboard in Power BI with a modern, Spotify-inspired UI,DAX, visualizing artist performance, song popularity trends, explicit vs non-explicit comparisons, and year-wise release distributions.",
     image: "https://via.placeholder.com/400x300?text=Spotify+Analytics",
     tags: [
-  { name: "Power BI", icon: <FaChartBar /> },
-  { name: "DAX", icon: <FaChartBar /> },
-  { name: "Relational Modeling", icon: <FaDatabase /> },
-  { name: "KPI Dashboards", icon: <FaChartBar /> },
-],
-
+      { name: "Power BI", icon: <FaChartBar /> },
+      { name: "DAX", icon: <FaChartBar /> },
+      { name: "Relational Modeling", icon: <FaDatabase /> },
+      { name: "KPI Dashboards", icon: <FaChartBar /> },
+    ],
   },
 ];
 
 export default function Projects() {
+  const rowGradients = [
+    {
+      hover: "from-purple-600/40 to-pink-600/40",
+      tag: "border-pink-500/40 text-pink-400",
+    },
+    {
+      hover: "from-orange-500/40 to-rose-500/40",
+      tag: "border-orange-400/40 text-orange-300",
+    },
+    {
+      hover: "from-blue-600/40 to-cyan-600/40",
+      tag: "border-cyan-400/40 text-cyan-300",
+    },
+  ];
+
   return (
     <section id="projects" className="py-28 px-4 relative">
       <div className="max-w-7xl mx-auto text-center">
@@ -152,16 +151,26 @@ export default function Projects() {
 
         {/* Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projectsData.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {projectsData.map((project, index) => {
+            const rowIndex = Math.floor(index / 3);
+            const rowStyle = rowGradients[rowIndex] || rowGradients[0];
+
+            return (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                hoverGradient={rowStyle.hover}
+                tagStyle={rowStyle.tag}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, hoverGradient, tagStyle }) {
   return (
     <motion.div
       whileHover={{ y: -8, scale: 1.03 }}
@@ -170,7 +179,8 @@ function ProjectCard({ project }) {
     >
       {/* Hover Gradient Overlay */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-purple-600/40 to-pink-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-gradient-to-br ${hoverGradient}
+        opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
       />
 
       <div className="relative z-10 flex flex-col h-full">
@@ -184,17 +194,21 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Content */}
-        <h3 className="text-2xl font-semibold mb-2 text-white">{project.title}</h3>
-        <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
+        <h3 className="text-2xl font-semibold mb-2 text-white">
+          {project.title}
+        </h3>
+        <p className="text-gray-300 mb-4 text-sm">
+          {project.description}
+        </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tag, index) => (
             <div
               key={index}
-              className="flex items-center gap-1.5 px-3 py-1 bg-[#0d0d12]/50 rounded-full border border-white/20 text-[11px] font-medium text-gray-200"
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-medium bg-[#0d0d12]/50 ${tagStyle}`}
             >
-              <span className="text-gray-400">{tag.icon}</span>
+              <span>{tag.icon}</span>
               {tag.name}
             </div>
           ))}

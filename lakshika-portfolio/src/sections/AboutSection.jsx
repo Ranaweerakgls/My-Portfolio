@@ -31,40 +31,49 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
 
           <Card
-            icon={<Briefcase size={38} />}
-            title="Experience"
-            description="Professional experience in building scalable digital products"
-            points={[
-              "Full-Stack Web Development (MERN Stack)",
-              "Android Application Development",
-              "Java & Kotlin Programming",
-            ]}
-            hoverGradient="from-purple-600/40 to-pink-600/40"
-          />
+           icon={<Briefcase size={38} />}
+           title="Experience"
+           description="Hands-on experience gained through academic and personal projects"
+           points={[
+              "Full-Stack Web Development (MERN, PHP, MySQL)",
+              "Android Application Development (Kotlin, SQLite)",
+              "UI/UX Design & Prototyping (Figma)",
+              "Data Analytics & Dashboards (Power BI, DAX)",
+              "GitHub Version Control & Team Collaboration",
+           ]}
+          hoverGradient="from-purple-600/40 to-pink-600/40"
+    />
 
-          <Card
-            icon={<GraduationCap size={38} />}
-            title="Education"
-            description="Strong academic foundation in computing and Information Technology"
-            points={[
-              "BSc (Hons) in Information Technology",
-              "Specialized in Information Technology",
-              "GPA: 3.2 (SLIIT)",
-            ]}
-            hoverGradient="from-blue-600/40 to-cyan-600/40"
-          />
 
-          <Card
-            icon={<Award size={38} />}
-            title="Certifications"
-            description="Industry-recognized certifications validating technical expertise"
-            points={[
-              "Android Application Development Certification",
-              "Web Technologies Certification",
-              "Database Management Systems Certification",
-            ]}
-            hoverGradient="from-orange-500/40 to-pink-500/40"
-          />
+        <Card
+          icon={<GraduationCap size={38} />}
+          title="Education"
+          description="Strong academic foundation in computing and Information Technology"
+          points={[
+           "BSc (Hons) in Information Technology – SLIIT (2023 – Present)",
+           "Specialized in Information Technology",
+           "GPA: 3.2",
+           "GCE Advanced Level – Arts Stream",
+           "Mahamaya Girls’ College, Kandy (2008 – 2021)",
+        ]}
+       hoverGradient="from-blue-600/40 to-cyan-600/40"
+     />
+
+
+        <Card
+           icon={<Award size={38} />}
+           title="Certifications"
+           description="Skill validation through academic coursework and practical projects"
+           points={[
+             "Android Application Development (Kotlin)",
+             "Web Technologies (MERN Stack, PHP, MySQL)",
+             "UI/UX Design Fundamentals (Figma)",
+             "Database Management Systems",
+             "Data Visualization & Analytics (Power BI)",
+          ]}
+          hoverGradient="from-orange-500/40 to-pink-500/40"
+      />
+
 
         </div>
 

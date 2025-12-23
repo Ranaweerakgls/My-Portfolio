@@ -44,11 +44,11 @@ export default function SkillsSection() {
       gradient: "from-green-400 to-emerald-600",
       skills: [
         { name: "Node.js", level: 4, icon: <FaNodeJs /> },
-        { name: "Python", level: 5, icon: <SiPython /> },
-        { name: "Java", level: 4, icon: <FaJava /> },
-        { name: "C++", level: 3, icon: <SiCplusplus /> },
+        { name: "Python", level: 2, icon: <SiPython /> },
+        { name: "Java", level: 5, icon: <FaJava /> },
+        { name: "C++", level: 5, icon: <SiCplusplus /> },
         { name: "MongoDB", level: 4, icon: <SiMongodb /> },
-        { name: "SQL / SQLite", level: 3, icon: <SiMysql /> },
+        { name: "SQL / SQLite", level: 4, icon: <SiMysql /> },
       ],
     },
     {
@@ -60,7 +60,7 @@ export default function SkillsSection() {
         { name: "Android Studio", level: 4, icon: <SiAndroid /> },
         { name: "XML UI", level: 4, icon: <FaMobileAlt /> },
         { name: "React Native", level: 3, icon: <SiReact /> },
-        { name: "Firebase", level: 4, icon: <FaDatabase /> },
+        { name: "Firebase", level: 2, icon: <FaDatabase /> },
       ],
     },
     {
@@ -81,9 +81,8 @@ export default function SkillsSection() {
       gradient: "from-pink-400 to-rose-500",
       skills: [
         { name: "Figma", level: 4, icon: <FaFigma /> },
-        { name: "Wireframing", level: 4, icon: <FaFigma /> },
-        { name: "Prototyping", level: 4, icon: <FaFigma /> },
-        { name: "User Research", level: 4, icon: <FaFigma /> },
+        { name: "Wireframing", level: 5, icon: <FaFigma /> },
+        { name: "Prototyping", level: 5, icon: <FaFigma /> },
         { name: "Usability Testing", level: 3, icon: <FaFigma /> },
         { name: "Interaction Design", level: 4, icon: <FaFigma /> },
       ],

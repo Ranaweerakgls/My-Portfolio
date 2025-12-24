@@ -147,14 +147,7 @@ export default function Hero({ imageSrc }) {
               <FaLinkedin /> LinkedIn
             </motion.a>
 
-            {/* CONTACT ME BUTTON (border only, like GitHub/LinkedIn buttons) */}
-            <motion.a
-              href="#contact"
-              className="flex items-center gap-2 px-6 py-4 rounded-full border border-pink-400 text-pink-300 shadow-md"
-              whileHover={{ scale: 1.08, rotate: 1, boxShadow: "0 8px 20px rgba(244,114,182,0.2)", transition: { type: "spring" } }}
-            >
-              Contact Me
-            </motion.a>
+            
           </motion.div>
         </motion.div>
       </motion.div>

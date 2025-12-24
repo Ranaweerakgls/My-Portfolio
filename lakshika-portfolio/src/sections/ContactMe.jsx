@@ -1,17 +1,44 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
 import { Mail, Phone, MapPin } from "lucide-react";
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn, FaGithub, FaYoutube } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaGithub,
+  FaYoutube,
+} from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 export default function ContactMe() {
   const hoverGradient = "from-purple-600/40 to-pink-600/40";
+  const formRef = useRef();
+
+  const sendEmail = async (e) => {
+  e.preventDefault();
+  try {
+    const result = await emailjs.sendForm(
+      "service_v0gng7u",
+      "template_4holl1t",
+      formRef.current,
+      "VedQxtsAtPPD-y2Th"
+    );
+    alert("Message sent successfully!");
+    e.target.reset();
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send message. Please check your keys and try again.");
+  }
+};
 
   const socialLinks = [
-    { icon: <FaLinkedinIn className="text-white" />, url: "https://linkedin.com/in/lakshika-ranaweera-905989296", bg: "bg-[#0A66C2]" }, // LinkedIn
-    { icon: <FaGithub className="text-white" />, url: "https://github.com/Ranaweerakgls", bg: "bg-[#171515]" }, // GitHub
-    { icon: <FaYoutube className="text-white" />, url: "https://youtube.com/@music_with_sandu?si=iEKqh2XAw8-euxKH", bg: "bg-[#FF0000]" }, // YouTube
-    { icon: <FaWhatsapp className="text-white" />, url: "https://wa.me/0703745293", bg: "bg-[#25D366]" }, // WhatsApp
-    { icon: <FaInstagram className="text-white" />, url: "https://www.instagram.com/sandu_.gurl", bg: "bg-[#E1306C]" }, // Instagram
-    { icon: <FaFacebookF className="text-white" />, url: "https://www.facebook.com/lakshika.ranaweera.50", bg: "bg-[#1877F2]" }, // Facebook
+    { icon: <FaLinkedinIn />, url: "https://linkedin.com/in/lakshika-ranaweera-905989296", bg: "bg-[#0A66C2]" },
+    { icon: <FaGithub />, url: "https://github.com/Ranaweerakgls", bg: "bg-[#171515]" },
+    { icon: <FaYoutube />, url: "https://youtube.com/@music_with_sandu?si=iEKqh2XAw8-euxKH", bg: "bg-[#FF0000]" },
+    { icon: <FaWhatsapp />, url: "https://wa.me/0703745293", bg: "bg-[#25D366]" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/sandu_.gurl", bg: "bg-[#E1306C]" },
+    { icon: <FaFacebookF />, url: "https://www.facebook.com/lakshika.ranaweera.50", bg: "bg-[#1877F2]" },
   ];
 
   return (
@@ -37,10 +64,9 @@ export default function ContactMe() {
           </h2>
         </motion.div>
 
-        {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-          {/* Contact Info + Social */}
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -48,26 +74,10 @@ export default function ContactMe() {
             transition={{ duration: 0.6 }}
             className="space-y-6 text-left"
           >
-            <InfoCard
-              icon={<Mail size={28} />}
-              title="Email"
-              value="sadumgc123@gmail.com"
-              hoverGradient={hoverGradient}
-            />
-            <InfoCard
-              icon={<Phone size={28} />}
-              title="Phone"
-              value="+94 374 5293"
-              hoverGradient={hoverGradient}
-            />
-            <InfoCard
-              icon={<MapPin size={28} />}
-              title="Location"
-              value="Sri Lanka"
-              hoverGradient={hoverGradient}
-            />
+            <InfoCard icon={<Mail size={28} />} title="Email" value="sadumgc123@gmail.com" hoverGradient={hoverGradient} />
+            <InfoCard icon={<Phone size={28} />} title="Phone" value="+94 374 5293" hoverGradient={hoverGradient} />
+            <InfoCard icon={<MapPin size={28} />} title="Location" value="Sri Lanka" hoverGradient={hoverGradient} />
 
-            {/* Social Links */}
             <div className="flex justify-center md:justify-start gap-4 mt-6">
               {socialLinks.map((social, index) => (
                 <a
@@ -75,7 +85,7 @@ export default function ContactMe() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${social.bg} transition text-white text-xl p-3 rounded-full flex items-center justify-center border border-white/10 hover:opacity-90`}
+                  className={`${social.bg} text-white text-xl p-3 rounded-full flex items-center justify-center border border-white/10 hover:opacity-90 transition`}
                 >
                   {social.icon}
                 </a>
@@ -85,41 +95,47 @@ export default function ContactMe() {
 
           {/* Contact Form */}
           <motion.form
+            ref={formRef}
+            onSubmit={sendEmail}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative bg-[#0d0d12] border border-white/10 rounded-3xl p-8 space-y-6 overflow-hidden group"
           >
-            {/* Gradient overlay for hover effect */}
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${hoverGradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-3xl`}
-            />
+            <div className={`absolute inset-0 bg-gradient-to-br ${hoverGradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-3xl`} />
 
             <div className="relative z-10 space-y-4">
               <input
                 type="text"
+                name="user_name"
                 placeholder="Your Name"
+                required
+                aria-label="Your Name"
                 className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
               />
 
               <input
                 type="email"
+                name="user_email"
                 placeholder="Your Email"
+                required
+                aria-label="Your Email"
                 className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50"
               />
 
               <textarea
+                name="message"
                 rows="5"
                 placeholder="Write your message..."
+                required
+                aria-label="Message"
                 className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50 resize-none"
               />
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl font-semibold text-white
-                bg-gradient-to-r from-pink-500 to-purple-500
-                hover:opacity-90 transition mt-2"
+                className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 transition mt-2"
               >
                 Send Message
               </button>
@@ -135,9 +151,7 @@ export default function ContactMe() {
 function InfoCard({ icon, title, value, hoverGradient }) {
   return (
     <div className="relative group">
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${hoverGradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl`}
-      />
+      <div className={`absolute inset-0 bg-gradient-to-br ${hoverGradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl`} />
       <div className="relative flex items-center gap-4 bg-[#0d0d12] border border-white/10 rounded-2xl p-5">
         <div className="text-pink-400">{icon}</div>
         <div>

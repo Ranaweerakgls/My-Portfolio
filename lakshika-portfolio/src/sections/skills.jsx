@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   FaReact,
   FaHtml5,
@@ -89,74 +90,123 @@ export default function SkillsSection() {
     },
   ];
 
+  // Variants
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.2 } },
+  };
+
+  const cardVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 20 } },
+  };
+
+  const headerVariant = {
+    hidden: { opacity: 0, y: -20, scale: 0.9 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120, damping: 18 } },
+  };
+
+  const skillRowVariant = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i) => ({ opacity: 1, x: 0, transition: { delay: i * 0.1, type: "spring", stiffness: 120, damping: 14 } }),
+  };
+
   return (
     <section id="skills" className="py-28 px-4 relative text-white">
-      <div className="max-w-7xl mx-auto text-center mb-20">
-        <p className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
+      {/* Title */}
+      <motion.div
+        className="max-w-7xl mx-auto text-center mb-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <motion.p
+          className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Dive Into My Work
-        </p>
-        <h2 className="text-5xl font-extrabold">
+        </motion.p>
+        <motion.h2
+          className="text-5xl font-extrabold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           Skills &{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+          <motion.span
+            className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Technologies
-          </span>
-        </h2>
-      </div>
+          </motion.span>
+        </motion.h2>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6">
+      {/* Skills Cards */}
+      <motion.div
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {skillsData.map((card, index) => (
-          <div
+          <motion.div
             key={index}
             className="skill-card"
-            style={{ animationDelay: `${index * 0.15}s` }}
+            variants={cardVariant}
+            whileHover={{ y: -12, scale: 1.03, boxShadow: "0 8px 25px rgba(130, 50, 255, 0.3)" }}
           >
-            <div className="card-header-box mb-6">
-              <div className={`icon-box bg-gradient-to-r ${card.gradient}`}>
-                {card.icon}
-              </div>
+            <motion.div className="card-header-box mb-6" variants={headerVariant}>
+              <div className={`icon-box bg-gradient-to-r ${card.gradient}`}>{card.icon}</div>
               <h3 className="skill-title">{card.title}</h3>
-            </div>
+            </motion.div>
 
             <div className="skills-container">
               {card.skills.map((skill, i) => (
-                <div key={i} className="skill-row">
+                <motion.div
+                  key={i}
+                  className="skill-row"
+                  custom={i}
+                  variants={skillRowVariant}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                >
                   <div className="skill-name">
                     <span className="skill-icon">{skill.icon}</span>
                     {skill.name}
                   </div>
-
                   <div className="dots">
                     {[...Array(5)].map((_, dotIndex) => (
-                      <span
-                        key={dotIndex}
-                        className={`dot ${
-                          dotIndex < skill.level ? "filled" : ""
-                        }`}
-                      />
+                      <span key={dotIndex} className={`dot ${dotIndex < skill.level ? "filled" : ""}`} />
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <style jsx>{`
+      {/* Styles */}
+      <style>{`
         .skill-card {
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(14px);
           padding: 24px;
           border-radius: 24px;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          animation: fadeUp 0.8s ease forwards;
-          opacity: 0;
+          box-shadow: 0 6px 15px rgba(0, 10, 30, 0.5); /* subtle dark shadow */
         }
 
         .skill-card:hover {
-          transform: translateY(-12px);
           background: rgba(255, 255, 255, 0.08);
           border-color: rgba(255, 255, 255, 0.2);
         }
@@ -179,7 +229,6 @@ export default function SkillsSection() {
           font-size: 22px;
           margin-bottom: 12px;
           color: #020617;
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         .skill-title {
@@ -225,18 +274,6 @@ export default function SkillsSection() {
 
         .dot.filled {
           background: #fff;
-          box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
         }
       `}</style>
     </section>

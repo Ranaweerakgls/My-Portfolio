@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import {
   SiMongodb,
   SiExpress,
@@ -23,6 +23,7 @@ const projectsData = [
     description:
       "Full-stack MERN web application for managing construction projects with role-based access, task tracking, budget & inventory management, and real-time client updates.",
     image: "../projects/ccms.jpg",
+    codeLink: "https://github.com/Ranaweerakgls/Construction-Company-Management-System.git",
     tags: [
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Express", icon: <SiExpress /> },
@@ -36,6 +37,7 @@ const projectsData = [
     description:
       "Android Kotlin app for managing expenses and budgets, featuring offline support, real-time alerts, interactive charts, biometric login, and cloud backup.",
     image: "../projects/Moblie.jpg",
+    codeLink: "https://github.com/Ranaweerakgls/Finance-Tracker-Mobile-App.git",
     tags: [
       { name: "Kotlin", icon: <SiKotlin /> },
       { name: "Android", icon: <SiAndroid /> },
@@ -49,6 +51,7 @@ const projectsData = [
     description:
       "Web-based Staff Management System for streamlining university operations with scheduling, IT support, authentication, and knowledge sharing, built with PHP, MySQL, HTML, CSS, and JavaScript.",
     image: "../projects/collage.png",
+    codeLink: "https://github.com/Ranaweerakgls/Staff-Management-System-SMS.git",
     tags: [
       { name: "PHP", icon: <SiPhp /> },
       { name: "MySQL", icon: <SiMysql /> },
@@ -63,6 +66,8 @@ const projectsData = [
     description:
       "Interactive Power BI dashboard analyzing coffee sales trends, DAX, KPIs, time-based and product-level performance, with dynamic visualizations and a user-friendly interface.",
     image: "../projects/Sales.jpg",
+    codeLink: "https://github.com/Ranaweerakgls/Coffee-Sales-Dashboard-Power-BI.git",
+    codeLabel: "Repo",
     tags: [
       { name: "Power BI", icon: <FaChartBar /> },
       { name: "DAX", icon: <FaChartBar /> },
@@ -76,6 +81,8 @@ const projectsData = [
     description:
       "Interactive Spotify Analytics Dashboard in Power BI with a modern, Spotify-inspired UI, DAX, visualizing artist performance, song popularity trends, explicit vs non-explicit comparisons, and year-wise release distributions.",
     image: "../projects/Spotify.png",
+    codeLink: "https://github.com/Ranaweerakgls/Spotify-Dashboard.git",
+    codeLabel: "Repo",
     tags: [
       { name: "Power BI", icon: <FaChartBar /> },
       { name: "DAX", icon: <FaChartBar /> },
@@ -89,6 +96,7 @@ const projectsData = [
     description:
       "Redesigned the Mag City website to improve usability, accessibility, and visual consistency, using Figma for wireframing, prototyping, and UI/UX enhancements based on user research and evaluation.",
     image: "../projects/Magcity.png",
+    prototypeLink: "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI?node-id=614-9695&t=488f8edzSZfQLTuA-1",
     tags: [
       { name: "UI/UX", icon: <SiFigma /> },
       { name: "Figma", icon: <SiFigma /> },
@@ -102,6 +110,7 @@ const projectsData = [
     description:
       "Designed Spiffy, a sleek food delivery app with intuitive onboarding, a visually appealing dark green theme, streamlined 3-step checkout, and personalized Favorites/Profile features to enhance user experience and retention.",
     image: "../projects/Food.JPG",
+    prototypeLink: "https://www.figma.com/proto/IZ5awZjoEFu9CbQsjf83lY/Completed-Spiffy?node-id=0-1&t=OxsTWWkPBh2wo88d-1",
     tags: [
       { name: "Figma", icon: <SiFigma /> },
       { name: "UI/UX", icon: <SiFigma /> },
@@ -148,7 +157,13 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <motion.div
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {projectsData.map((project, index) => {
             const rowIndex = Math.floor(index / 3);
             const rowStyle = rowGradients[rowIndex] || rowGradients[0];
@@ -162,31 +177,85 @@ export default function Projects() {
               />
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
 function ProjectCard({ project, hoverGradient, tagStyle }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const spotlight = useMotionTemplate`
+    radial-gradient(
+      320px at ${mouseX}px ${mouseY}px,
+      rgba(255,255,255,0.12),
+      transparent 70%
+    )
+  `;
+
+  function handleMouseMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }
+
   return (
     <motion.div
+      onMouseMove={handleMouseMove}
+      variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
       whileHover={{ y: -8, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 180, damping: 18 }}
       className="relative rounded-3xl p-6 text-left bg-[#0d0d12] border border-white/10 group overflow-hidden flex flex-col h-full"
     >
+      <motion.div
+        style={{ background: spotlight }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      />
+
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${hoverGradient}
-        opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-gradient-to-br ${hoverGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
       />
 
       <div className="relative z-10 flex flex-col h-full">
-        <div className="relative h-48 w-full overflow-hidden rounded-2xl mb-6 flex items-center justify-center">
+        {/* IMAGE AREA (HOVER ONLY HERE) */}
+        <div className="relative h-48 w-full overflow-hidden rounded-2xl mb-6 group/image flex items-center justify-center">
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-contain object-center"
           />
+
+          {/* Black overlay */}
+          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
+
+          {/* Buttons */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
+            {project.codeLink && (
+              <a
+                href={project.codeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition"
+              >
+                <SiGithub />
+                {project.codeLabel || "Code"}
+              </a>
+            )}
+
+            {project.prototypeLink && (
+              <a
+                href={project.prototypeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition"
+              >
+                <SiFigma />
+                Prototype
+              </a>
+            )}
+          </div>
         </div>
 
         <h3 className="text-2xl font-semibold mb-2 text-white">

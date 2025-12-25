@@ -15,7 +15,11 @@ export default function AboutSection() {
   // Fade-up variant for cards
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20 },
+    },
   };
 
   // Variant for list items
@@ -44,7 +48,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-28 px-4 relative">
+    <section id="about" className="py-20 md:py-28 px-4 relative">
       <div className="max-w-7xl mx-auto text-center">
 
         {/* Header with animation */}
@@ -53,9 +57,9 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, type: "spring", stiffness: 120, damping: 20 }}
-          className="mb-20"
+          className="mb-14 md:mb-20"
         >
-          <p className="text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-gray-400 mb-4">
             Get To Know More
           </p>
 
@@ -64,7 +68,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-extrabold text-white inline-block"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white inline-block"
           >
             About{" "}
             <motion.span
@@ -81,7 +85,7 @@ export default function AboutSection() {
 
         {/* Cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mb-14 md:mb-20"
           variants={container}
           initial="hidden"
           whileInView="visible"
@@ -132,9 +136,9 @@ export default function AboutSection() {
           />
         </motion.div>
 
-        {/* About Me Description with enhanced animations */}
+        {/* About Me Description */}
         <motion.div
-          className="max-w-4xl mx-auto text-gray-300 text-base md:text-lg leading-relaxed space-y-6"
+          className="max-w-4xl mx-auto text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed space-y-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -149,7 +153,11 @@ export default function AboutSection() {
               initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: i * 0.3 }}
-              whileHover={{ scale: 1.02, color: "#f472b6", transition: { duration: 0.3 } }}
+              whileHover={{
+                scale: 1.02,
+                color: "#f472b6",
+                transition: { duration: 0.3 },
+              }}
             >
               {text}
             </motion.p>
@@ -174,11 +182,20 @@ function Card({ icon, title, description, points, hoverGradient, index }) {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { delay: index * 0.2, type: "spring", stiffness: 120, damping: 18 } },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: index * 0.2,
+            type: "spring",
+            stiffness: 120,
+            damping: 18,
+          },
+        },
       }}
       whileHover={{ y: -8, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 180, damping: 18 }}
-      className="relative rounded-3xl p-10 text-left bg-[#0d0d12] border border-white/10 group overflow-hidden"
+      className="relative rounded-3xl p-6 sm:p-8 md:p-10 text-left bg-[#0d0d12] border border-white/10 group overflow-hidden"
     >
       {/* Hover Gradient Overlay */}
       <div
@@ -191,11 +208,11 @@ function Card({ icon, title, description, points, hoverGradient, index }) {
           {icon}
         </div>
 
-        <h3 className="text-2xl font-semibold mb-2 text-white text-center">
+        <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-white text-center">
           {title}
         </h3>
 
-        <p className="text-gray-300 mb-6 text-center">
+        <p className="text-gray-300 mb-6 text-center text-sm sm:text-base">
           {description}
         </p>
 

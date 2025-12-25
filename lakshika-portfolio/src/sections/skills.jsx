@@ -148,7 +148,7 @@ export default function SkillsSection() {
 
       {/* Skills Cards */}
       <motion.div
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6"
+        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-6 px-6"
         variants={container}
         initial="hidden"
         whileInView="visible"
@@ -203,7 +203,7 @@ export default function SkillsSection() {
           border-radius: 24px;
           border: 1px solid rgba(255, 255, 255, 0.1);
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          box-shadow: 0 6px 15px rgba(0, 10, 30, 0.5); /* subtle dark shadow */
+          box-shadow: 0 6px 15px rgba(0, 10, 30, 0.5);
         }
 
         .skill-card:hover {
@@ -274,6 +274,47 @@ export default function SkillsSection() {
 
         .dot.filled {
           background: #fff;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 640px) {
+          .skill-card {
+            padding: 16px;
+            border-radius: 16px;
+          }
+
+          .skill-title {
+            font-size: 1.1rem;
+          }
+
+          .skill-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 0.85rem;
+          }
+
+          .dots {
+            justify-content: flex-start;
+          }
+
+          .icon-box {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+          }
+
+          h2 {
+            font-size: 2.5rem; /* title scales for small devices */
+          }
+
+          p {
+            font-size: 0.75rem; /* subtitle smaller */
+          }
+
+          .grid {
+            gap: 6px; /* reduce spacing for smaller screens */
+          }
         }
       `}</style>
     </section>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import {
   SiMongodb,
@@ -23,7 +23,8 @@ const projectsData = [
     description:
       "Full-stack MERN web application for managing construction projects with role-based access, task tracking, budget & inventory management, and real-time client updates.",
     image: "../projects/ccms.jpg",
-    codeLink: "https://github.com/Ranaweerakgls/Construction-Company-Management-System.git",
+    codeLink:
+      "https://github.com/Ranaweerakgls/Construction-Company-Management-System.git",
     tags: [
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Express", icon: <SiExpress /> },
@@ -37,7 +38,8 @@ const projectsData = [
     description:
       "Android Kotlin app for managing expenses and budgets, featuring offline support, real-time alerts, interactive charts, biometric login, and cloud backup.",
     image: "../projects/Moblie.jpg",
-    codeLink: "https://github.com/Ranaweerakgls/Finance-Tracker-Mobile-App.git",
+    codeLink:
+      "https://github.com/Ranaweerakgls/Finance-Tracker-Mobile-App.git",
     tags: [
       { name: "Kotlin", icon: <SiKotlin /> },
       { name: "Android", icon: <SiAndroid /> },
@@ -51,7 +53,8 @@ const projectsData = [
     description:
       "Web-based Staff Management System for streamlining university operations with scheduling, IT support, authentication, and knowledge sharing, built with PHP, MySQL, HTML, CSS, and JavaScript.",
     image: "../projects/collage.png",
-    codeLink: "https://github.com/Ranaweerakgls/Staff-Management-System-SMS.git",
+    codeLink:
+      "https://github.com/Ranaweerakgls/Staff-Management-System-SMS.git",
     tags: [
       { name: "PHP", icon: <SiPhp /> },
       { name: "MySQL", icon: <SiMysql /> },
@@ -66,7 +69,8 @@ const projectsData = [
     description:
       "Interactive Power BI dashboard analyzing coffee sales trends, DAX, KPIs, time-based and product-level performance, with dynamic visualizations and a user-friendly interface.",
     image: "../projects/Sales.jpg",
-    codeLink: "https://github.com/Ranaweerakgls/Coffee-Sales-Dashboard-Power-BI.git",
+    codeLink:
+      "https://github.com/Ranaweerakgls/Coffee-Sales-Dashboard-Power-BI.git",
     codeLabel: "Repo",
     tags: [
       { name: "Power BI", icon: <FaChartBar /> },
@@ -81,7 +85,8 @@ const projectsData = [
     description:
       "Interactive Spotify Analytics Dashboard in Power BI with a modern, Spotify-inspired UI, DAX, visualizing artist performance, song popularity trends, explicit vs non-explicit comparisons, and year-wise release distributions.",
     image: "../projects/Spotify.png",
-    codeLink: "https://github.com/Ranaweerakgls/Spotify-Dashboard.git",
+    codeLink:
+      "https://github.com/Ranaweerakgls/Spotify-Dashboard.git",
     codeLabel: "Repo",
     tags: [
       { name: "Power BI", icon: <FaChartBar /> },
@@ -96,7 +101,8 @@ const projectsData = [
     description:
       "Redesigned the Mag City website to improve usability, accessibility, and visual consistency, using Figma for wireframing, prototyping, and UI/UX enhancements based on user research and evaluation.",
     image: "../projects/Magcity.png",
-    prototypeLink: "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI?node-id=614-9695&t=488f8edzSZfQLTuA-1",
+    prototypeLink:
+      "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI",
     tags: [
       { name: "UI/UX", icon: <SiFigma /> },
       { name: "Figma", icon: <SiFigma /> },
@@ -110,7 +116,8 @@ const projectsData = [
     description:
       "Designed Spiffy, a sleek food delivery app with intuitive onboarding, a visually appealing dark green theme, streamlined 3-step checkout, and personalized Favorites/Profile features to enhance user experience and retention.",
     image: "../projects/Food.JPG",
-    prototypeLink: "https://www.figma.com/proto/IZ5awZjoEFu9CbQsjf83lY/Completed-Spiffy?node-id=0-1&t=OxsTWWkPBh2wo88d-1",
+    prototypeLink:
+      "https://www.figma.com/proto/IZ5awZjoEFu9CbQsjf83lY/Completed-Spiffy",
     tags: [
       { name: "Figma", icon: <SiFigma /> },
       { name: "UI/UX", icon: <SiFigma /> },
@@ -158,7 +165,10 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } },
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -186,6 +196,7 @@ export default function Projects() {
 function ProjectCard({ project, hoverGradient, tagStyle }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [isTapped, setIsTapped] = useState(false);
 
   const spotlight = useMotionTemplate`
     radial-gradient(
@@ -201,9 +212,14 @@ function ProjectCard({ project, hoverGradient, tagStyle }) {
     mouseY.set(e.clientY - rect.top);
   }
 
+  function handleTap() {
+    setIsTapped(!isTapped);
+  }
+
   return (
     <motion.div
       onMouseMove={handleMouseMove}
+      onClick={handleTap}
       variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
       whileHover={{ y: -8, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 180, damping: 18 }}
@@ -219,62 +235,82 @@ function ProjectCard({ project, hoverGradient, tagStyle }) {
       />
 
       <div className="relative z-10 flex flex-col h-full">
-        {/* IMAGE AREA (HOVER ONLY HERE) */}
-        <div className="relative h-48 w-full overflow-hidden rounded-2xl mb-6 group/image flex items-center justify-center">
+        <motion.div
+          className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl mb-6 group/image flex items-center justify-center"
+          whileHover={{ scale: 1.05, rotate: 1 }}
+          transition={{ type: "spring", stiffness: 150, damping: 12 }}
+        >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-contain object-center"
+            className="w-full h-full object-cover object-center"
           />
 
-          {/* Black overlay */}
-          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
+          {/* Overlay */}
+          <div
+            className={`absolute inset-0 bg-black/70 transition-opacity duration-300 ${
+              isTapped
+                ? "opacity-100"
+                : "opacity-0 group-hover/image:opacity-100"
+            }`}
+          />
 
-          {/* Buttons */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
+          {/* Buttons (FINAL FIXED) */}
+          <motion.div
+            className={`absolute inset-0 z-20 flex items-center justify-center gap-4 flex-wrap transition-opacity duration-300 ${
+              isTapped
+                ? "opacity-100"
+                : "opacity-0 group-hover/image:opacity-100"
+            }`}
+            transition={{ duration: 0.3 }}
+          >
             {project.codeLink && (
-              <a
+              <motion.a
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <SiGithub />
                 {project.codeLabel || "Code"}
-              </a>
+              </motion.a>
             )}
 
             {project.prototypeLink && (
-              <a
+              <motion.a
                 href={project.prototypeLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <SiFigma />
                 Prototype
-              </a>
+              </motion.a>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <h3 className="text-2xl font-semibold mb-2 text-white">
+        <motion.h3 className="text-2xl font-semibold mb-2 text-white">
           {project.title}
-        </h3>
+        </motion.h3>
 
-        <p className="text-gray-300 mb-4 text-sm">
+        <motion.p className="text-gray-300 mb-4 text-xs sm:text-sm">
           {project.description}
-        </p>
+        </motion.p>
 
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tag, index) => (
-            <div
+            <motion.div
               key={index}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-medium bg-[#0d0d12]/50 ${tagStyle}`}
             >
               <span>{tag.icon}</span>
               {tag.name}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

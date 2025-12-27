@@ -22,7 +22,8 @@ const projectsData = [
     title: "Construction Company Management System (CCMS)",
     description:
       "Full-stack MERN web application for managing construction projects with role-based access, task tracking, budget & inventory management, and real-time client updates.",
-    image: "../projects/ccms.jpg",
+      image: `${import.meta.env.BASE_URL}projects/ccms.jpg`,
+
     codeLink:
       "https://github.com/Ranaweerakgls/Construction-Company-Management-System.git",
     tags: [
@@ -37,7 +38,7 @@ const projectsData = [
     title: "Personal Finance Tracker App (BUDGETLYST)",
     description:
       "Android Kotlin app for managing expenses and budgets, featuring offline support, real-time alerts, interactive charts, biometric login, and cloud backup.",
-    image: "../projects/Moblie.jpg",
+      image: `${import.meta.env.BASE_URL}projects/Moblie.jpg`,
     codeLink:
       "https://github.com/Ranaweerakgls/Finance-Tracker-Mobile-App.git",
     tags: [
@@ -52,7 +53,7 @@ const projectsData = [
     title: "Staff Management System (SMS)",
     description:
       "Web-based Staff Management System for streamlining university operations with scheduling, IT support, authentication, and knowledge sharing, built with PHP, MySQL, HTML, CSS, and JavaScript.",
-    image: "../projects/collage.png",
+      image: `${import.meta.env.BASE_URL}projects/collage.png`,
     codeLink:
       "https://github.com/Ranaweerakgls/Staff-Management-System-SMS.git",
     tags: [
@@ -68,7 +69,7 @@ const projectsData = [
     title: "Coffee Sales Dashboard",
     description:
       "Interactive Power BI dashboard analyzing coffee sales trends, DAX, KPIs, time-based and product-level performance, with dynamic visualizations and a user-friendly interface.",
-    image: "../projects/Sales.jpg",
+      image: `${import.meta.env.BASE_URL}projects/Sales.jpg`,
     codeLink:
       "https://github.com/Ranaweerakgls/Coffee-Sales-Dashboard-Power-BI.git",
     codeLabel: "Repo",
@@ -84,7 +85,7 @@ const projectsData = [
     title: "Spotify Analytics Dashboard",
     description:
       "Interactive Spotify Analytics Dashboard in Power BI with a modern, Spotify-inspired UI, DAX, visualizing artist performance, song popularity trends, explicit vs non-explicit comparisons, and year-wise release distributions.",
-    image: "../projects/Spotify.png",
+      image: `${import.meta.env.BASE_URL}projects/Spotify.png`,
     codeLink:
       "https://github.com/Ranaweerakgls/Spotify-Dashboard.git",
     codeLabel: "Repo",
@@ -100,7 +101,7 @@ const projectsData = [
     title: "UI/UX Design for Mag City Website",
     description:
       "Redesigned the Mag City website to improve usability, accessibility, and visual consistency, using Figma for wireframing, prototyping, and UI/UX enhancements based on user research and evaluation.",
-    image: "../projects/Magcity.png",
+      image: `${import.meta.env.BASE_URL}projects/Magcity.png`,
     prototypeLink:
       "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI",
     tags: [
@@ -115,7 +116,7 @@ const projectsData = [
     title: "Spiffy Food Delivery App",
     description:
       "Designed Spiffy, a sleek food delivery app with intuitive onboarding, a visually appealing dark green theme, streamlined 3-step checkout, and personalized Favorites/Profile features to enhance user experience and retention.",
-    image: "../projects/Food.JPG",
+      image: `${import.meta.env.BASE_URL}projects/Food.JPG`,
     prototypeLink:
       "https://www.figma.com/proto/IZ5awZjoEFu9CbQsjf83lY/Completed-Spiffy",
     tags: [

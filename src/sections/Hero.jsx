@@ -57,52 +57,53 @@ export default function Hero({ imageSrc }) {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 15 }}
-            whileHover={{
-              scale: 1.05,
-              rotate: 1,
-              boxShadow: "0 25px 60px rgba(244,114,182,0.35)",
-            }}
           >
             <img
               src={imageSrc}
               alt="Lakshika Ranaweera"
               className="w-full h-full object-cover rounded-full"
             />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 opacity-10 pointer-events-none animate-pulse-slow"></div>
           </motion.div>
 
-          {/* Floating Role Cards (NOW visible on mobile too) */}
+          {/* FULL-STACK CARD */}
           <motion.div
-            className="absolute -top-10 -left-10 flex flex-col gap-4"
+            className="absolute
+              top-full mt-4 left-1/2 -translate-x-1/2
+              md:-top-10 md:-left-10 md:translate-x-0
+              flex"
             variants={container}
           >
             <motion.div
-              className="px-4 py-2 bg-purple-700 text-white rounded-xl shadow-xl cursor-default"
+              className="px-4 py-2 bg-purple-700 text-white rounded-xl shadow-xl text-sm sm:text-base"
               variants={floatCard}
             >
               Full-Stack Developer
             </motion.div>
           </motion.div>
 
+          {/* UI/UX CARD */}
           <motion.div
-            className="absolute -bottom-6 -right-6 flex flex-col gap-4"
+            className="absolute
+              top-full mt-14 left-1/2 -translate-x-1/2
+              md:-bottom-6 md:-right-6 md:translate-x-0
+              flex"
             variants={container}
           >
             <motion.div
-              className="px-4 py-2 bg-pink-600 text-white rounded-xl shadow-xl cursor-default"
+              className="px-4 py-2 bg-pink-600 text-white rounded-xl shadow-xl text-sm sm:text-base"
               variants={floatCard}
             >
               UI/UX Designer
             </motion.div>
           </motion.div>
 
-          {/* Background Glow */}
+          {/* Glow */}
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-pink-400 via-purple-500 to-indigo-400 opacity-15 blur-3xl -z-10 animate-pulse-slow"></div>
         </motion.div>
 
         {/* TEXT SECTION (UNCHANGED) */}
         <motion.div className="flex flex-col items-start text-left space-y-4 sm:space-y-6 md:space-y-10 w-full sm:w-auto">
-          {/* your existing text & buttons stay exactly the same */}
+          {/* ... your text & buttons stay EXACTLY the same */}
         </motion.div>
       </motion.div>
     </section>

@@ -105,8 +105,7 @@ const projectsData = [
       "Redesigned the Mag City website to improve usability, accessibility, and visual consistency, using Figma for wireframing, prototyping, and UI/UX enhancements based on user research and evaluation.",
     image: `${import.meta.env.BASE_URL}projects/Magcity.png`,
     prototypeLink:
-      "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI?node-id=614-9695&t=YIZMbYqtZwOCgeo1-1",
-      
+      "https://www.figma.com/proto/kNxZH97bRLRRTZwfhuiF5K/Project-Group-HCI",
     tags: [
       { name: "UI/UX", icon: <SiFigma /> },
       { name: "Figma", icon: <SiFigma /> },

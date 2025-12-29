@@ -86,7 +86,7 @@ export default function ContactMe() {
             className="space-y-4 sm:space-y-5 md:space-y-6 text-left"
           >
             <InfoCard icon={<Mail size={24} />} title="Email" value="sadumgc123@gmail.com" hoverGradient={hoverGradient} />
-            <InfoCard icon={<Phone size={24} />} title="Phone" value="+94 374 5293" hoverGradient={hoverGradient} />
+            <InfoCard icon={<Phone size={24} />} title="Phone" value="(+94)70 374 5293" hoverGradient={hoverGradient} />
             <InfoCard icon={<MapPin size={24} />} title="Location" value="Sri Lanka" hoverGradient={hoverGradient} />
 
             <motion.div
